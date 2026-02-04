@@ -1,0 +1,199 @@
+---
+title: "Yelp Reviews EDA"
+author: "Kaitlyn Chou (group leader), Jensen Harvey, and Emily Friedman"
+date: "2026-01-30"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+library(stringr)
+library(ggplot2)
+library(tidyverse)
+library(janitor)
+library(textdata)
+
+```
+
+### Load Data
+
+```{r}
+
+yelp <- read_csv("Yelp Restaurant Reviews.csv")
+
+
+yelp <- yelp %>%
+  clean_names() %>%              
+  rename(
+    url = yelp_url,              
+    text = review_text           
+  )
+
+
+head(yelp)
+
+
+str(yelp)
+
+
+summary(yelp)
+
+```
+
+### Check Missing Values
+
+```{r}
+colSums(is.na(yelp))
+
+```
+
+```{r}
+class(yelp$rating)
+```
+
+#### Distribution of Star Ratings
+
+```{r}
+ggplot(yelp, aes(x = factor(rating))) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Distribution of Yelp Star Ratings",
+       x = "Star Rating",
+       y = "Count")
+
+```
+
+
+#### Review Length
+```{r}
+yelp <- yelp %>%
+  mutate(review_length = nchar(text))
+
+ggplot(yelp, aes(review_length)) +
+  geom_histogram(bins = 40, fill = "darkred") +
+  labs(title = "Distribution of Review Lengths",
+       x = "Number of Characters",
+       y = "Count")
+
+```
+
+#### Text pre-processing Preview
+```{r}
+
+tidy_reviews <- yelp %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
+
+head(tidy_reviews)
+
+```
+
+
+#### Avg Review Length by Rating
+```{r}
+
+yelp %>%
+  group_by(rating) %>%
+  summarise(avg_length = mean(review_length)) %>%
+  ggplot(aes(x = factor(rating), y = avg_length)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Average Review Length by Star Rating",
+       x = "Star Rating",
+       y = "Average Review Length (Characters)")
+
+```
+
+
+#### More commmon words 
+```{r}
+tidy_reviews %>%
+  count(word, sort = TRUE) %>%
+  slice_head(n = 20) %>%
+  ggplot(aes(x = reorder(word, n), y = n)) +
+  geom_col(fill = "purple") +
+  coord_flip() +
+  labs(title = "Most Common Words in Yelp Reviews",
+       x = "Word",
+       y = "Frequency")
+
+```
+
+#### Word Frequency by Rating 
+```{r}
+tidy_reviews %>%
+  count(rating, word, sort = TRUE) %>%
+  group_by(rating) %>%
+  slice_max(n, n = 10) %>%
+  ungroup() %>%
+  ggplot(aes(x = reorder(word, n), y = n, fill = factor(rating))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ rating, scales = "free") +
+  coord_flip() +
+  labs(title = "Top Words by Star Rating",
+       x = "Word",
+       y = "Count")
+
+```
+
+
+
+### Get rid of Dessert Names: 
+```{r}
+
+food_stopwords <- tibble(word = c(
+  "ice", "cream", "chocolate", "vanilla", "cookie", "cookies",
+  "cake", "cakes", "flavor", "flavors", "bakery", "donut", "donuts",
+  "milk", "frosting", "icing", "dessert", "desserts", "sweet", "sweets"
+))
+
+
+sentiment_words <- bind_rows(
+  get_sentiments("bing"),
+  get_sentiments("afinn"),
+  get_sentiments("nrc")
+) %>%
+  distinct(word)
+
+
+opinionated_reviews <- tidy_reviews %>%
+  anti_join(food_stopwords, by = "word") %>%
+  semi_join(sentiment_words, by = "word")
+
+
+opinionated_reviews %>%
+  count(word, sort = TRUE) %>%
+  slice_head(n = 20) %>%
+  ggplot(aes(x = reorder(word, n), y = n)) +
+  geom_col(fill = "purple") +
+  coord_flip() +
+  labs(title = "Most Common Words in Yelp Reviews (filtered)",
+       x = "Word",
+       y = "Frequency")
+```
+
+
+
+### Segmented by Star Rating
+```{r}
+opinionated_reviews %>%
+  count(rating, word, sort = TRUE) %>%
+  group_by(rating) %>%
+  slice_max(n, n = 10) %>%
+  ungroup() %>%
+  ggplot(aes(x = reorder_within(word, n, rating), y = n, fill = factor(rating))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ rating, scales = "free") +
+  scale_x_reordered() +
+  coord_flip() +
+  labs(title = "Top Words by Star Rating (filtered)",
+       x = "Word",
+       y = "Count")
+```
+
+
+
+
+
