@@ -40,7 +40,5 @@ Install these packages before running the code:
 
 ---
 
-## 2) Documentation Map (Folder / File Tree)
 
-Below is the intended structure of the project folder. If your repo layout differs, update this tree to match your actual folders and filenames.
 
