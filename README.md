@@ -13,7 +13,7 @@ At a high level, this repo includes:
 
 ---
 
-## 1) Software and Platform
+## Section 1) Software and Platform
 
 ### Software
 - **R** (RStudio recommended)
@@ -37,4 +37,77 @@ Install these packages before running the code:
 - `rmarkdown`
 
 (If you run into a missing-package error, install whatever package the error message names.)
+
+NEED TO FILL IN SECTION 2 ONCE ALL OTHER PARTS OF GITHUB ARE UPLOADED
+
+## Section 3. Instructions for Reproducing Results
+
+This section provides step-by-step instructions to reproduce the exploratory analysis, modeling, and results for this project.
+
+### Step 1: Install Required Software and Packages
+
+- Install **R** and **RStudio**.
+- Open RStudio and install all required packages listed in **Section 1** of this README.
+- If any packages are missing, R will prompt you to install them when running the scripts.
+
+### Step 2: Obtain and Place the Dataset
+
+- Download or locate the file `Yelp Restaurant Reviews.csv`.
+- Place the file in the `DATA/` folder at the top level of the repository.
+- The raw dataset should **not** be manually edited.
+
+### Step 3: Run Data Loading and Cleaning Scripts
+
+- Open the scripts in the `SCRIPTS/` folder.
+- Run the script responsible for loading and cleaning the data.
+- This script:
+  - Reads the CSV file from the `DATA/` folder
+  - Standardizes column names
+  - Prepares the text and rating variables for analysis
+
+### Step 4: Run Exploratory Data Analysis (EDA)
+
+- Run the EDA script(s) in the `SCRIPTS/` folder.
+- These scripts generate summary statistics and plots showing:
+  - The distribution of Yelp star ratings
+  - The distribution of review lengths
+  - Frequently occurring words by star rating
+- All EDA figures are saved to the `OUTPUT/` folder.
+
+### Step 5: Run Text Preprocessing and Feature Engineering
+
+- Run the preprocessing script(s) that clean the review text, including:
+  - Lowercasing
+  - Removing punctuation and numbers
+  - Removing stop words
+  - Filtering out dessert-related food nouns
+  - Tokenizing the text
+- TF–IDF features are created, and review length is added as a numeric predictor.
+
+### Step 6: Train Predictive Models
+
+- Run the modeling script(s) in the `SCRIPTS/` folder to split the data into training and test sets.
+- Train the following models:
+  - **Logistic regression**
+  - **Random forest**
+- Class imbalance is addressed using class weighting or balanced sampling.
+
+### Step 7: Evaluate Model Performance
+
+- Run the evaluation code to compute:
+  - Accuracy
+  - Precision
+  - Recall
+  - F1 score
+  - Confusion matrices
+  - ROC AUC values
+- Model performance summaries and comparison plots are saved to the `OUTPUT/` folder.
+
+### Step 8: Review Final Results
+
+- Confirm that the reproduced results align with those reported in the project documentation and presentation.
+- Key findings include:
+  - Stronger overall performance for the **random forest** model
+  - The importance of **review length** and **sentiment-bearing words** in predicting ratings
+
 
