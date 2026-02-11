@@ -80,7 +80,6 @@ This section provides step-by-step instructions to reproduce the exploratory ana
   - Removing punctuation and numbers
   - Removing stop words
   - Filtering out dessert-related food nouns
-  - Tokenizing the text
 - TF–IDF features are created, and review length is added as a numeric predictor.
 
 ### Step 6: Train Predictive Models
@@ -100,7 +99,6 @@ This section provides step-by-step instructions to reproduce the exploratory ana
   - F1 score
   - Confusion matrices
   - ROC AUC values
-- Model performance summaries and comparison plots are saved to the `OUTPUT/` folder.
 
 ### Step 8: Review Final Results
 
