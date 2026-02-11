@@ -52,8 +52,7 @@ This section provides step-by-step instructions to reproduce the exploratory ana
 
 ### Step 2: Obtain and Place the Dataset
 
-- Download or locate the file `Yelp Restaurant Reviews.csv`.
-- Place the file in the `DATA/` folder at the top level of the repository.
+- Locate and download the file `Yelp Restaurant Reviews.csv` from the DATA/ folder
 - The raw dataset should **not** be manually edited.
 
 ### Step 3: Run Data Loading and Cleaning Scripts
