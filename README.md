@@ -40,7 +40,7 @@ Install these packages before running the code:
 
 NEED TO FILL IN SECTION 2 ONCE ALL OTHER PARTS OF GITHUB ARE UPLOADED
 
-## Section 3. Instructions for Reproducing Results
+## Section 3) Instructions for Reproducing Results
 
 This section provides step-by-step instructions to reproduce the exploratory analysis, modeling, and results for this project.
 
