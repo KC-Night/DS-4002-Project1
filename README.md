@@ -44,28 +44,6 @@ NEED TO FILL IN SECTION 2 ONCE ALL OTHER PARTS OF GITHUB ARE UPLOADED
 
 This section describes the organization of the GitHub repository and the purpose of each folder and file.
 
-### Top-Level Structure
-
-DS-4002-Project1/
-├── DATA/
-│   └── Yelp Restaurant Reviews.csv
-│
-├── OUTPUT/
-│   ├── yelp_eda.Rmd
-│   ├── yelp_eda.html
-│   └── yelp_eda.pdf
-│
-├── MILESTONES/
-│   ├── Yelp Reviews Milestone 1.pdf
-│   └── Yelp Reviews Milestone 2.pdf
-│
-├── SCRIPTS/
-│   ├── yelp_sentiment_analysis.Rmd
-│   └── yelp_sentiment_analysis.pdf
-│
-├── Yelp Reviews Project - References.pdf
-└── README.md
-
 ### Folder and File Descriptions
 
 #### DATA/
