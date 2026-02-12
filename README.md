@@ -69,6 +69,8 @@ Contains analysis and modeling code.
 #### Additional Files
 - Yelp Reviews Project - References.pdf: Reference material and sources used in the project.
 - README.md: Provides an overview of the project, software requirements, repository structure, and instructions for reproducing results.
+- DS 4002 Project 1 Presentation Slides.pdf: Final presentation slides summarizing the research question, data, methods, results, and conclusions of the project.
+
 ## Section 3) Instructions for Reproducing Results
 
 This section provides step-by-step instructions to reproduce the exploratory analysis, modeling, and results for this project.
