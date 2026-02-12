@@ -47,7 +47,6 @@ This section describes the organization of the GitHub repository and the purpose
 ### Top-Level Structure
 
 DS-4002-Project1/
-│
 ├── DATA/
 │   └── Yelp Restaurant Reviews.csv
 │
@@ -65,7 +64,6 @@ DS-4002-Project1/
 │   └── yelp_sentiment_analysis.pdf
 │
 ├── Yelp Reviews Project - References.pdf
-│
 └── README.md
 
 ### Folder and File Descriptions
