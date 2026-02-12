@@ -40,6 +40,59 @@ Install these packages before running the code:
 
 NEED TO FILL IN SECTION 2 ONCE ALL OTHER PARTS OF GITHUB ARE UPLOADED
 
+## Section 2) Repository Structure and Documentation Map
+
+This section describes the organization of the GitHub repository and the purpose of each folder and file.
+
+### Top-Level Structure
+
+DS-4002-Project1/
+│
+├── DATA/
+│   └── Yelp Restaurant Reviews.csv
+│
+├── OUTPUT/
+│   ├── yelp_eda.Rmd
+│   ├── yelp_eda.html
+│   └── yelp_eda.pdf
+│
+├── MILESTONES/
+│   ├── Yelp Reviews Milestone 1.pdf
+│   └── Yelp Reviews Milestone 2.pdf
+│
+├── SCRIPTS/
+│   ├── yelp_sentiment_analysis.Rmd
+│   └── yelp_sentiment_analysis.pdf
+│
+├── Yelp Reviews Project - References.pdf
+│
+└── README.md
+
+### Folder and File Descriptions
+
+#### DATA/
+Contains the raw dataset used for the project.
+- Yelp Restaurant Reviews.csv: Original Yelp restaurant reviews dataset used for all exploratory analysis and modeling. This file is not manually modified.
+
+#### OUTPUT/
+Contains generated outputs from the exploratory data analysis.
+- yelp_eda.Rmd: R Markdown file used to perform exploratory data analysis.
+- yelp_eda.html: Rendered HTML output of the EDA.
+- yelp_eda.pdf: PDF version of the EDA results.
+
+#### MILESTONES/
+Contains project milestone submissions documenting the project’s development.
+- Yelp Reviews Milestone 1.pdf: Initial project proposal and design.
+- Yelp Reviews Milestone 2.pdf: Refined analysis plan, EDA findings, and modeling strategy.
+
+#### SCRIPTS/
+Contains analysis and modeling code.
+- yelp_sentiment_analysis.Rmd: R Markdown file containing text preprocessing, feature engineering, model training, and evaluation.
+- yelp_sentiment_analysis.pdf: Rendered PDF output of the sentiment analysis and modeling results.
+
+#### Additional Files
+- Yelp Reviews Project - References.pdf: Reference material and sources used in the project.
+- README.md: Provides an overview of the project, software requirements, repository structure, and instructions for reproducing results.
 ## Section 3) Instructions for Reproducing Results
 
 This section provides step-by-step instructions to reproduce the exploratory analysis, modeling, and results for this project.
