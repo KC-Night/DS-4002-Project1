@@ -1,7 +1,7 @@
 # DS-4002-Project1
 # Yelp Reviews Sentiment Analysis (DS 4002 Project 1)
 
-This repository contains our end-to-end data science project using Yelp restaurant reviews to (1) explore how review language and review length relate to star ratings and (2) build a predictive model that classifies reviews as **Negative (1–3 stars)** vs. **Positive (4–5 stars)**.
+This repository contains all parts of out data science project where we used Yelp restaurant reviews to (1) explore how review language and review length relate to star ratings and (2) build a predictive model that classifies reviews as **Negative (1–3 stars)** vs. **Positive (4–5 stars)**.
 
 ## Repository Contents (What’s in here)
 At a high level, this repo includes:
@@ -48,28 +48,28 @@ This section describes the organization of the GitHub repository and the purpose
 
 #### DATA/
 Contains the raw dataset used for the project.
-- Yelp Restaurant Reviews.csv: Original Yelp restaurant reviews dataset used for all exploratory analysis and modeling. This file is not manually modified.
+- **Yelp Restaurant Reviews.csv:** Original Yelp restaurant reviews dataset used for all exploratory analysis and modeling. This file is not manually modified.
 
 #### OUTPUT/
 Contains generated outputs from the exploratory data analysis.
-- yelp_eda.Rmd: R Markdown file used to perform exploratory data analysis.
-- yelp_eda.html: Rendered HTML output of the EDA.
-- yelp_eda.pdf: PDF version of the EDA results.
+- **yelp_eda.Rmd:** R Markdown file used to perform exploratory data analysis.
+- **yelp_eda.html:** Rendered HTML output of the EDA.
+- **yelp_eda.pdf:** PDF version of the EDA results.
 
 #### MILESTONES/
 Contains project milestone submissions documenting the project’s development.
-- Yelp Reviews Milestone 1.pdf: Initial project proposal and design.
-- Yelp Reviews Milestone 2.pdf: Refined analysis plan, EDA findings, and modeling strategy.
+- **Yelp Reviews Milestone 1.pdf:** Initial project proposal and design.
+- **Yelp Reviews Milestone 2.pdf:** Refined analysis plan, EDA findings, and modeling strategy.
 
 #### SCRIPTS/
 Contains analysis and modeling code.
-- yelp_sentiment_analysis.Rmd: R Markdown file containing text preprocessing, feature engineering, model training, and evaluation.
-- yelp_sentiment_analysis.pdf: Rendered PDF output of the sentiment analysis and modeling results.
+- **yelp_sentiment_analysis.Rmd:** R Markdown file containing text preprocessing, feature engineering, model training, and evaluation.
+- **yelp_sentiment_analysis.pdf:** Rendered PDF output of the sentiment analysis and modeling results.
 
 #### Additional Files
-- Yelp Reviews Project - References.pdf: Reference material and sources used in the project.
-- README.md: Provides an overview of the project, software requirements, repository structure, and instructions for reproducing results.
-- DS 4002 Project 1 Presentation Slides.pdf: Final presentation slides summarizing the research question, data, methods, results, and conclusions of the project.
+- **Yelp Reviews Project - References.pdf:** Reference material and sources used in the project.
+- **README.md:** Provides an overview of the project, software requirements, repository structure, and instructions for reproducing results.
+- **DS 4002 Project 1 Presentation Slides.pdf:** Final presentation slides summarizing the research question, data, methods, results, and conclusions of the project.
 
 ## Section 3) Instructions for Reproducing Results
 
@@ -86,52 +86,40 @@ This section provides step-by-step instructions to reproduce the exploratory ana
 - Locate and download the file `Yelp Restaurant Reviews.csv` from the DATA/ folder
 - The raw dataset should **not** be manually edited.
 
-### Step 3: Run Data Loading and Cleaning Scripts
+### Step 3: Run exploratory data analysis (EDA)
 
-- Open the scripts in the `SCRIPTS/` folder.
-- Run the script responsible for loading and cleaning the data.
-- This script:
-  - Reads the CSV file from the `DATA/` folder
-  - Standardizes column names
-  - Prepares the text and rating variables for analysis
+Open the file `OUTPUT/yelp_eda.Rmd` in RStudio and run it from top to bottom.  
+This file contains all code used to perform exploratory data analysis, including:
+- Distribution of Yelp star ratings  
+- Distribution of review lengths  
+- Word frequency plots by star rating  
 
-### Step 4: Run Exploratory Data Analysis (EDA)
+The rendered EDA outputs are saved as `yelp_eda.html` and `yelp_eda.pdf` in the `OUTPUT/` folder.
 
-- Run the EDA script(s) in the `SCRIPTS/` folder.
-- These scripts generate summary statistics and plots showing:
-  - The distribution of Yelp star ratings
-  - The distribution of review lengths
-  - Frequently occurring words by star rating
-- All EDA figures are saved to the `OUTPUT/` folder.
+### Step 4: Preprocess text and engineer features
 
-### Step 5: Run Text Preprocessing and Feature Engineering
+Open the file `SCRIPTS/yelp_sentiment_analysis.Rmd` in RStudio and run the preprocessing sections of the file.  
+This script performs all text preprocessing and feature engineering steps, including:
+- Cleaning and standardizing review text  
+- Removing stop words and non-informative terms  
+- Filtering out dessert-related food nouns  
+- Tokenizing text and creating TF–IDF features  
+- Computing review length as an additional numeric feature  
 
-- Run the preprocessing script(s) that clean the review text, including:
-  - Lowercasing
-  - Removing punctuation and numbers
-  - Removing stop words
-  - Filtering out dessert-related food nouns
-- TF–IDF features are created, and review length is added as a numeric predictor.
+All preprocessing steps are contained within this file and do not require running any additional scripts.
 
-### Step 6: Train Predictive Models
+### Step 5: Train predictive models
 
-- Run the modeling script(s) in the `SCRIPTS/` folder to split the data into training and test sets.
-- Train the following models:
-  - **Logistic regression**
-  - **Random forest**
-- Class imbalance is addressed using class weighting or balanced sampling.
+Continue running `SCRIPTS/yelp_sentiment_analysis.Rmd` to train and evaluate predictive models.  
+This file:
+- Splits the data into training and test sets  
+- Trains a logistic regression model and a random forest model  
+- Uses binary classification (1–3 stars as negative, 4–5 stars as positive)  
+- Evaluates model performance using accuracy, precision, recall, F1 score, confusion matrices, and ROC AUC  
 
-### Step 7: Evaluate Model Performance
+Model results and figures generated during this step correspond to those reported in the project documentation and presentation.
 
-- Run the evaluation code to compute:
-  - Accuracy
-  - Precision
-  - Recall
-  - F1 score
-  - Confusion matrices
-  - ROC AUC values
-
-### Step 8: Review Final Results
+### Step 6: Review Final Results
 
 - Confirm that the reproduced results align with those reported in the project documentation and presentation.
 - Key findings include:
